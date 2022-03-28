@@ -2,19 +2,37 @@ const express = require('express');
 const expressLayouts = require('express-ejs-layouts');
 const db = require('./config/mongoose');
 const cookieParser = require('cookie-parser');
-const { urlencoded } = require('express');
-
+const bodyParser = require('body-parser');
+// used for session cookie
+const session = require('express-session');
+const passport = require('passport');
+const passportLocal = require('./config/passport-local-strategy');
 
 const app = express();
 app.use(cookieParser());
-app.use(urlencoded());
+app.use(bodyParser.urlencoded({ extended: false }));
 // set up the view engine
 app.set('view engine', 'ejs');
 app.set('views', './views');
 app.use(express.static('./assets'));
 app.use(expressLayouts);
-app.set("layout extractStyles", true)
-app.set("layout extractScripts", true)
+app.set("layout extractStyles", true);
+app.set("layout extractScripts", true);
+
+app.use(session({
+    name: 'ReachMe',
+    // Change before deployment
+    secret: 'blah blah blah', 
+    saveUninitialized: false,
+    resave: false,
+    cookie: {
+        maxAge: 1000*24*365,
+        secure: true
+    }
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 // use express router
 app.use('/', require('./routes'));
