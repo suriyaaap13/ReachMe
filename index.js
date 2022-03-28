@@ -26,18 +26,19 @@ app.use(session({
     saveUninitialized: false,
     resave: false,
     cookie: {
-        maxAge: 1000*24*365,
-        secure: true
+        maxAge: 1000*24*365
     }
 }));
 
 app.use(passport.initialize());
 app.use(passport.session());
 
+app.use(passport.setAuthenticatedUser);
+
 // use express router
 app.use('/', require('./routes'));
 
-const port = 8000;
+const port = 3000;
 app.listen(port, function(err){
     if(err){
         console.log(`Error: ${err}`);

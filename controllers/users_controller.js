@@ -1,13 +1,15 @@
 const User = require('../models/user');
 module.exports.profile = function(req, res){
-    return res.render('home', {
+    return res.render('user_profile', {
         title: "Profile Page"
     });
 }
 
 // render the login page
 module.exports.login = function(req,res){
-    console.log(req.body);
+    if(req.isAuthenticated()){
+        return res.redirect('/users/profile');
+    }
     return res.render('login', {
         title: "Login"
     });
@@ -15,6 +17,9 @@ module.exports.login = function(req,res){
 
 // render the register page
 module.exports.register = function(req,res){
+    if(req.isAuthenticated()){
+        return res.redirect('/users/profile');
+    }
     return res.render('register', {
         title: "Register"
     });
