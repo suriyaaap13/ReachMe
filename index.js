@@ -5,6 +5,7 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 // used for session cookie
 const session = require('express-session');
+const MongoStore = require('connect-mongo');
 const passport = require('passport');
 const passportLocal = require('./config/passport-local-strategy');
 
@@ -27,7 +28,13 @@ app.use(session({
     resave: false,
     cookie: {
         maxAge: 1000*24*365
-    }
+    },
+    store: MongoStore.create({
+        mongoUrl: 'mongodb://localhost:27017/reachMe_development',
+        autoRemove: 'disabled'
+    },function(err){
+        if(err){console.log(err);}
+    })
 }));
 
 app.use(passport.initialize());
