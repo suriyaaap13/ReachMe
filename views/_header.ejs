@@ -7,11 +7,16 @@
     </head>
     <body>
         <header>
-            <h1>Page Header</h1>
+            <h1>ReachMe</h1>
 
             <ul>
 
                 <% if(locals.user){ %>
+                    <li>
+                        <a href="/">
+                            Home
+                        </a>
+                    </li>
                     <li>
                         <a href="/users/profile">
                             <%= user.name %>
