@@ -2,3 +2,17 @@
 <h1>
     ReachMe/<%= title %>  
 </h1>
+<%if(locals.user){%>
+
+    <form action="/posts/create" id="new-post-form" method="post">
+        <textarea name="content" id="new-post-content" cols="30" rows="5" placeholder="What's in your mind!!"></textarea>
+        <button type="submit">Post</button>
+    </form>
+
+    <%for(let i of post){%>
+        <h3>
+            <%= i.content %>
+        </h3>    
+    <%}%>
+
+<%}%>
