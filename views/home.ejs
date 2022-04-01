@@ -4,15 +4,30 @@
 </h1>
 <%if(locals.user){%>
 
-    <form action="/posts/create" id="new-post-form" method="post">
-        <textarea name="content" id="new-post-content" cols="30" rows="5" placeholder="What's in your mind!!"></textarea>
-        <button type="submit">Post</button>
-    </form>
+    <div class="post-form">
+        <form action="/posts/create" id="new-post-form" method="post">
+            <textarea name="content" id="new-post-content" cols="30" rows="5" placeholder="What's in your mind!!"></textarea>
+            <button type="submit">Post</button>
+        </form>
+    </div>
+    
 
-    <%for(let i of post){%>
-        <h3>
-            <%= i.content %>
-        </h3>    
-    <%}%>
+    <div class="post-list-items">
+        <ul>
+            <p>
+                <%for(let i of post){%>
+                    <li>
+                        <h5>
+                            <%= i.user.name %>
+                        </h5>
+                        <%= i.content %>
+                    </li>    
+                <%}%>
+            </p>
+            
+        </ul>
+        
+    </div>
+    
 
 <%}%>
