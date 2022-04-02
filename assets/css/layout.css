@@ -14,7 +14,7 @@
   justify-content: space-between;
   padding: 16px 32px;
   border-bottom: 1px solid black;
-  box-shadow: 0px 1px 7px;
+  box-shadow: 0px 0.25px 7px;
 }
 
 * header h1 {
@@ -28,32 +28,9 @@
 }
 
 * header ul li a {
-  font-family: sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-size: 17px;
   padding-right: 20px;
-}
-
-* #layout-main #home-container {
-  display: flex;
-}
-
-* #layout-main #home-container #user-feed {
-  width: 80%;
-}
-
-* #layout-main #home-container #user-friends {
-  width: 20%;
-  height: 100%;
-}
-
-* #layout-main #home-container #user-friends #friends-container ul {
-  list-style: none;
-}
-
-* #layout-main #home-container #user-friends #friends-container ul li a {
-  font-family: sans-serif;
-  font-size: 16px;
-  text-decoration: none;
 }
 
 * footer {

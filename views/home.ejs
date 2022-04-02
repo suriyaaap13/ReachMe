@@ -3,9 +3,9 @@
 <div id="home-container">
     <%if(locals.user){%>
         <section id="user-feed">
-            <div class="post-form">
+            <div id="post-form">
                 <form action="/posts/create" id="new-post-form" method="post">
-                    <textarea name="content" id="new-post-content" cols="30" rows="5" placeholder="What's in your mind!!" required></textarea>
+                    <textarea name="content" id="new-post-content" cols="30" rows="5" placeholder="What's in your mind??" required></textarea>
                     <button type="submit">Post</button>
                 </form>
             </div>
