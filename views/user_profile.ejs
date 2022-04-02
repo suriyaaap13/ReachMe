@@ -6,15 +6,12 @@
     <% if(user.id==profile_user.id){ %>
         <!-- show form to update -->
         <form action=" /users/update/<%= profile_user._id %> " method="post">
-            <input type="text" name="name" placeholder="Your name" value = <%= profile_user.name %> >
-            <input type="email" name="email" id="" placeholder="Your email" value = <%= profile_user.email %> >
-            <input type="submit" value="Update">
+            <input type="text" name="name" placeholder="Your name" value= "<%= profile_user.name %>" >
+            <input type="email" name="email" id="" placeholder="Your email" value = "<%= profile_user.email %>" >
+            <button type="submit">Update</button>
         </form>
-        <h3>User Name: <%= profile_user.name %></h3>
-        <h3>User Name: <%= profile_user.email %></h3>
-    <% }else{ %>
-        <!-- show only user info -->
-        <h3>User Name: <%= profile_user.name %></h3>
-        <h3>User Name: <%= profile_user.email %></h3>
     <% } %>
+    <!-- show only user info -->
+    <h3>User Name: <%= profile_user.name %></h3>
+    <h3>User Name: <%= profile_user.email %></h3>
 </div>

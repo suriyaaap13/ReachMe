@@ -1,8 +1,7 @@
 const User = require('../models/user');
 const Post = require('../models/post');
 module.exports.profile = function(req, res){
-    User.findById(req.params.id,function(err, user){
-        console.log(user);
+    User.findById(req.params.id, function(err, user){
         return res.render('user_profile', {
             title: "Profile Page",
             profile_user: user
@@ -59,4 +58,13 @@ module.exports.destroySession = function(req, res){
     return res.redirect('/');
 }
 
-
+module.exports.update = function(req, res){
+    if(res.locals.user.id==req.params.id){
+        User.findByIdAndUpdate(req.params.id, req.body, function(err){
+            if(err){console.log("Error in finding and updating the user "+err);return;}
+            res.redirect('back');
+        });
+    }else{
+        res.redirect('back');
+    }
+}
