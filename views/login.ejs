@@ -1,6 +1,28 @@
-<h1><%= title %></h1>
-<form action="/users/create-session" method="post">
-    <input type="email" name = "email" placeholder="abc@xyz.com" required>
-    <input type="password" name = "password" placeholder="Password" required>
-    <button type="submit">Login</button>
-</form>
+<link rel="stylesheet" href="/css/login.css">
+<div id="form-page">
+    <div class="form-box">
+        <div class="caption-title">
+            <p>
+                <%= title %> into ReachMe
+            </p>
+        </div>
+        <div id="form-container">
+            <form action="/users/create-session" method="post">
+                <div class="input-data">
+                    <p>Handle/Email</p>
+                    <input type="email" name = "email" placeholder="abc@xyz.com" required>
+                </div>
+                <div class="input-data">
+                    <p>Password</p>
+                    <input type="password" name = "password" placeholder="Password" required>
+                </div>
+                <div class="move-btn">
+                    <button type="submit">Login</button>
+                </div>
+                
+            </form>
+        </div>
+    </div>
+    
+</div>
+
