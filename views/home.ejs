@@ -2,24 +2,41 @@
 <h1>
     ReachMe/<%= title %>  
 </h1>
-<%if(locals.user){%>
 
-    <div class="post-form">
-        <form action="/posts/create" id="new-post-form" method="post">
-            <textarea name="content" id="new-post-content" cols="30" rows="5" placeholder="What's in your mind!!" required></textarea>
-            <button type="submit">Post</button>
-        </form>
-    </div>
+<%if(locals.user){%>
+    <section>
+        <div class="post-form">
+            <form action="/posts/create" id="new-post-form" method="post">
+                <textarea name="content" id="new-post-content" cols="30" rows="5" placeholder="What's in your mind!!" required></textarea>
+                <button type="submit">Post</button>
+            </form>
+        </div>
+        
+    
+        <div class="post-list-items">
+            <ul>
+                
+                <% for(i of post){ %>
+                    <%- include('_post') -%>         
+                <% } %>
+    
+            </ul>
+        </div>
+    </section>
+    <section>
+        <h1>Friends</h1>
+        <div>  
+            <ul>
+                <% for(let u of all_users){ %>
+                    <li>
+                        <a href="/users/profile/<%= u._id %>">
+                            <%= u.name %>
+                        </a>
+                    </li>
+                <% } %>
+            </ul>
+        </div>
+    </section>
     
 
-    <div class="post-list-items">
-        <ul>
-            
-            <% for(i of post){ %>
-                <%- include('_post') -%>         
-            <% } %>
-
-        </ul>
-    </div>
-
-<%}%>
+<%}%>    
