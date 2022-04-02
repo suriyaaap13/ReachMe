@@ -1,5 +1,6 @@
 const { is } = require('express/lib/request');
 const Post = require('../models/post');
+
 module.exports.home = (req,res)=>{
     Post.find({})
     .populate('user')
