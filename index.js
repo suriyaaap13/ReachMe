@@ -5,9 +5,9 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 // used for session cookie
 const session = require('express-session');
-const MongoStore = require('connect-mongo');
 const passport = require('passport');
 const passportLocal = require('./config/passport-local-strategy');
+const MongoStore = require('connect-mongo');
 const sassMiddleware = require('node-sass-middleware');
 
 const app = express();
@@ -19,16 +19,17 @@ app.use(sassMiddleware({
     outputStyle: 'expanded',
     prefix:  '/css'  // Where prefix is at <link rel="stylesheets" href="prefix/style.css"/>
 }));
-
-app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: false }));
-// set up the view engine
-app.set('view engine', 'ejs');
-app.set('views', './views');
+app.use(cookieParser());
 app.use(express.static('./assets'));
+
+// set up the view engine
 app.use(expressLayouts);
 app.set("layout extractStyles", true);
 app.set("layout extractScripts", true);
+app.set('view engine', 'ejs');
+app.set('views', './views');
+
 
 app.use(session({
     name: 'ReachMe',
@@ -49,7 +50,6 @@ app.use(session({
 
 app.use(passport.initialize());
 app.use(passport.session());
-
 app.use(passport.setAuthenticatedUser);
 
 // use express router
