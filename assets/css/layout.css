@@ -1,12 +1,20 @@
 * {
   margin: 0;
   padding: 0;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+* *::-webkit-scrollbar {
+  display: none;
 }
 
 * header {
   display: flex;
   justify-content: space-between;
   padding: 16px 32px;
+  border-bottom: 1px solid black;
+  box-shadow: 0px 1px 7px;
 }
 
 * header h1 {
@@ -46,4 +54,19 @@
   font-family: sans-serif;
   font-size: 16px;
   text-decoration: none;
+}
+
+* footer {
+  width: 100%;
+  border-top: 1px solid black;
+  text-align: center;
+}
+
+* footer .container {
+  padding: 32px;
+}
+
+* footer .container p {
+  font-family: 'Roboto', sans-serif;
+  font-size: 18px;
 }
