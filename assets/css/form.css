@@ -1,0 +1,63 @@
+* #form-page {
+  height: 100%;
+  width: 100%;
+  padding: 100px 420px;
+}
+
+* #form-page .form-box {
+  width: 40%;
+  height: 40%;
+  border: 1px solid black;
+  border-radius: 7px;
+}
+
+* #form-page .form-box .caption-title {
+  padding: 8px;
+  border-bottom: 1px solid black;
+  height: 27px;
+}
+
+* #form-page .form-box .caption-title p {
+  font-family: 'Roboto', sans-serif;
+  font-size: 20px;
+  color: black;
+}
+
+* #form-page .form-box #form-container {
+  padding: 20px;
+}
+
+* #form-page .form-box #form-container form {
+  padding: 30px 70px;
+}
+
+* #form-page .form-box #form-container form .input-data {
+  display: flex;
+}
+
+* #form-page .form-box #form-container form .input-data p {
+  font-family: 'Roboto', sans-serif;
+  font-size: 20px;
+  width: 160px;
+}
+
+* #form-page .form-box #form-container form .input-data input {
+  display: block;
+  height: 32px;
+  padding: 3px;
+  width: 250px;
+  font-size: 16px;
+  margin-bottom: 23px;
+  outline: none;
+}
+
+* #form-page .form-box #form-container form .move-btn {
+  padding: 7px 130px;
+}
+
+* #form-page .form-box #form-container form .move-btn button {
+  padding: 3px;
+  font-size: 16px;
+  height: 30px;
+  width: 90px;
+}

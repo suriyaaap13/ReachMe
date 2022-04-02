@@ -1,8 +1,36 @@
-<h1><%= title %></h1>
-<form action="/users/create" method="post">
-    <input type="text" name = "name" placeholder="Your Name" required>
-    <input type="email" name = "email" placeholder="abc@xyz.com" required>
-    <input type="password" name = "password" placeholder="Password" required>
-    <input type="password" name = "confirm_password" placeholder="Confirm Password" required>
-    <button type="submit" value="register">Register</button>
-</form>
+<link rel="stylesheet" href="/css/form.css">
+<link rel="stylesheet" href="/css/register.css">
+<div id="form-page">
+    <div class="form-box">
+        <div class="caption-title">
+            <p>
+                <%= title %> into ReachMe
+            </p>
+        </div>
+        <div id="form-container">
+            <form action="/users/create-session" method="post">
+                <div class="input-data">
+                    <p>User Name</p>
+                    <input type="text" name = "name" placeholder="Your Name" required>
+                </div>
+                <div class="input-data">
+                    <p>Handle/Email</p>
+                    <input type="email" name = "email" placeholder="abc@xyz.com" required>
+                </div>
+                <div class="input-data">
+                    <p>Password</p>
+                    <input type="password" name = "password" placeholder="Password" required>
+                </div>
+                <div class="input-data">
+                    <p>Confirm Password</p>
+                    <input type="password" name = "confirm_password" placeholder="Confirm Password" required>
+                </div>
+                <div class="move-btn">
+                    <button type="submit" value="register">Register</button>
+                </div>
+                
+            </form>
+        </div>
+    </div>
+    
+</div>
