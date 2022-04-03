@@ -1,5 +1,5 @@
 * #layout-main {
-  height: 100%;
+  min-height: 100%;
 }
 
 * #layout-main #home-container {
@@ -13,7 +13,7 @@
 
 * #layout-main #home-container #user-feed #post-form {
   width: 300px;
-  box-shadow: 0px 0px 5px black;
+  box-shadow: 2px 2px 7px black;
   position: relative;
 }
 
@@ -69,12 +69,17 @@
   font-weight: 500;
 }
 
+* #layout-main #home-container #user-friends #friends-container ul {
+  list-style: none;
+}
+
 * #layout-main #home-container #user-friends #friends-container ul li {
   padding: 16px 0px;
   border-bottom: 1px solid lightgray;
 }
 
 * #layout-main #home-container #user-friends #friends-container ul li a {
+  color: blue;
   text-decoration: underline;
   font-family: 'Roboto', sans-serif;
   font-size: 20px;

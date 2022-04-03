@@ -1,6 +1,6 @@
 *{
     #layout-main{
-        height: 100%;
+        min-height: 100%;
         #home-container{
             display: flex;
             padding: 16px 32px;
@@ -8,7 +8,7 @@
                 width: 80%;
                 #post-form{
                     width: 300px;
-                    box-shadow: 0px 0px 5px black;
+                    box-shadow: 2px 2px 7px black;
                     position: relative;
                     form{
                         box-shadow: 0px 1px black;
@@ -60,12 +60,12 @@
                 }
                 #friends-container{
                     ul{
-                        
+                        list-style: none;
                         li{
                             padding: 16px 0px;
                             border-bottom: 1px solid lightgray;
                             a{
-                                
+                                color: blue;
                                 text-decoration: underline;
                                 font-family: 'Roboto', sans-serif;
                                 font-size: 20px;
