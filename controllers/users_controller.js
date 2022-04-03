@@ -22,7 +22,7 @@ module.exports.login = function(req,res){
 // render the register page
 module.exports.register = function(req,res){
     if(req.isAuthenticated()){
-        return res.redirect('/users/profile');
+        return res.redirect('/');
     }
     return res.render('register', {
         title: "Register"
@@ -30,21 +30,21 @@ module.exports.register = function(req,res){
 }
 
 // get the registeration data
-module.exports.create = function(req, res){
+module.exports.create = async function(req, res){
     if(req.body.password!=req.body.confirm_password){
         res.redirect('back');
     }
-    User.findOne({email: req.body.email}, function(err, user){
-        if(err)if(err){console.log("Error in finding the user "+err);}
+    try{
+        let user = await User.findOne({email: req.body.email});
         if(!user){
-            User.create(req.body, function(err){
-                if(err){console.log("Error in creating user "+err);}
-            });
+            await User.create(req.body);
             res.redirect('login');
-        }else{
-            res.redirect('back');
         }
-    });
+    }catch(err){
+        console.log("Error in creating the user", err);
+        return;
+    }
+    
 
 }
 
