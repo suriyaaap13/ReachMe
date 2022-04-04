@@ -32,29 +32,34 @@ module.exports.register = function(req,res){
 // get the registeration data
 module.exports.create = async function(req, res){
     if(req.body.password!=req.body.confirm_password){
+        req.flash('success','Password and confirm password doesnot match');
         res.redirect('back');
     }
     try{
         let user = await User.findOne({email: req.body.email});
         if(!user){
+            req.flash('success', 'User Registration Successfull');
             await User.create(req.body);
             res.redirect('login');
+        }else{
+            req.flash('success', 'Already a user exits with the mail address');
+            return res.redirect('login');
         }
     }catch(err){
         console.log("Error in creating the user", err);
         return;
     }
-    
-
 }
 
 // sign in and create a session for the user
 module.exports.createSession = function(req, res){
+    req.flash('success', 'Logged In Successfully');
     return res.redirect('/');
 }
 
 module.exports.destroySession = function(req, res){
     req.logout();
+    req.flash('success', 'Logged Out Successfully');
     return res.redirect('/');
 }
 
