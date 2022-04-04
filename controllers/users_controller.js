@@ -2,6 +2,10 @@ const User = require('../models/user');
 const Post = require('../models/post');
 module.exports.profile = function(req, res){
     User.findById(req.params.id, function(err, user){
+        if(err){
+            req.flash('error', err);
+            return res.redirect('back');
+        }
         return res.render('user_profile', {
             title: "Profile Page",
             profile_user: user
@@ -42,12 +46,12 @@ module.exports.create = async function(req, res){
             await User.create(req.body);
             res.redirect('login');
         }else{
-            req.flash('error', 'Already a user exits with the mail address');
+            req.flash('error', 'User exits');
             return res.redirect('login');
         }
     }catch(err){
-        console.log("Error in creating the user", err);
-        return;
+        req.flash('error', err);
+        return res.redirect('back');
     }
 }
 
@@ -70,6 +74,7 @@ module.exports.update = function(req, res){
             res.redirect('back');
         });
     }else{
+        res.flash('error', "You are not allowed to update");
         res.redirect('back');
     }
 }

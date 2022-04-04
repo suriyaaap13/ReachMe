@@ -12,10 +12,11 @@ module.exports.create = async function(req, res){
             });
             post.comments.push(comment);
             post.save();
-            res.redirect('/');
+            return res.redirect('/');
         }
     }catch(err){
-        console.log("Error ", err);
+       req.flash('error', err);
+       return res.redirect('back');
     }
 }
 
@@ -30,8 +31,7 @@ module.exports.destroy = async function(req, res){
             return res.redirect('back');
         }
     }catch(err){
-        console.log("Error ", err);
+        res.flash('error', 'You are not allowed to delete this comment');
+        return res.redirect('back');
     }
-    
-
 }
