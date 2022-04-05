@@ -7,12 +7,20 @@
             e.preventDefault();
             $.ajax({
                 type: 'post',
-                url: '/posts/create',
+                url: '/posts/create',//A string containing the URL to which the request is sent.
+                // where does this data come from? It looks like a databade stored data but we didn't connect anything
                 data: newPostForm.serialize(),
                 success: function(data){
+                    new Noty({
+                        theme: 'relax',
+                        text: "Post Created",
+                        type: 'success',
+                        layout: 'topRight',
+                        timeout: 1000
+                    }).show();
                     let newPost = newPostDom(data.data.post);
                     $('#post-list-container>ul').prepend(newPost);
-                    deletePost($(' .delete-post-btn', newPost));
+                    deletePost($(' .delete-post-btn', newPost));//I am not getting why we are writing this line. then I am not getting the way we are getting the class items
                 }, error: function(error){
                     console.log(error.responseText);
                 }
@@ -64,6 +72,13 @@
                 type: 'get',
                 url: $(deleteLink).prop('href'),
                 success: function(data){
+                    new Noty({
+                        theme: 'relax',
+                        text: "Post Deleted",
+                        type: 'warning',
+                        layout: 'topRight',
+                        timeout: 1000
+                    }).show();
                     $(`#post-${data.data.post_id}`).remove();
                 }, error: function(error){
                     console.log(error.responseText);
