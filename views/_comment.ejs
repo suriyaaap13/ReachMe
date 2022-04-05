@@ -5,7 +5,7 @@
                 <%= comment.user.name %>
             </p>
             <%if(locals.user && locals.user.id==comment.user.id){%>
-                <a href="/comments/destroy/<%= comment._id %>">
+                <a class="delete-comment-btn" href="/comments/destroy/<%= comment._id %>">
                     <p>X</p>
                 </a>
             <%}%>
