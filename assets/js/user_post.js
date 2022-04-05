@@ -11,6 +11,7 @@
                 // where does this data come from? It looks like a databade stored data but we didn't connect anything
                 data: newPostForm.serialize(),
                 success: function(data){
+                    console.log(data);
                     new Noty({
                         theme: 'relax',
                         text: "Post Created",
@@ -87,7 +88,57 @@
         });
     }
 
+
+    // function to submit the form data for new comment using AJAX
+    let createComment = function(){
+        
+        $('#add-comment-form').submit(function(e){
+            e.preventDefault();
+            $.ajax({
+                type: 'post',
+                url: '/comments/create',
+                data: commentForm.serialize(),
+                success: function(data){
+                    console.log("Hello World");
+                    console.log(data);
+                    newCommentDOM(data);
+                },error: function(err){
+                    console.log(err);
+                }
+            });
+        });
+    }
+
+    // method to create comment in DOM
+    let newCommentDOM = function(comment){
+        console.log("HI");
+        return $(`<li id="comment-${ comment._id }">
+                    <div class="comment-card">
+                        <div class="comment-title">
+                            <p>
+                                ${ comment.user }
+                            </p>
+                            <a href="/comments/destroy/${ comment._id }">
+                                <p>X</p>
+                            </a>
+                        </div>
+                        <div class="comment-content">
+                            <p>
+                            ${ comment.content }
+                            </p>
+                        </div>
+                    </div> 
+                </li>`);
+    }
+    
+    let deleteComment = function(deleteLink){
+
+    }
+
+
     createPost();
+
+    createComment();
 
 }
     

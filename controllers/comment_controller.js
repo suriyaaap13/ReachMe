@@ -12,6 +12,14 @@ module.exports.create = async function(req, res){
             });
             post.comments.push(comment);
             post.save();
+            if(req.xhr){
+                return res.status(200).json({
+                    data: {
+                        comment: comment
+                    },
+                    message: "Comment Created"
+                });
+            }
             return res.redirect('/');
         }
     }catch(err){
