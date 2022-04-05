@@ -8,8 +8,8 @@ passport.use(new LocalStrategy({
     },
     function(req, email, password, done) {
       User.findOne({ email: email }, function (err, user) {
-        if (err) { return done(err); }
-        if (user.password!=password||!user) { req.flash('error', 'Invalid Username/Password'); return done(null, false); }
+        // if (err) { req.flash('error', 'Invalid Username/Password'); return done(null, false); }
+        if (!user||user.password!=password) { req.flash('error', 'Invalid Username/Password'); return done(null, false); }
         return done(null, user);
       });
     }

@@ -44,7 +44,7 @@
                     
                         <form action="/comments/create" id="add-comment-form" method="post">
                             <input type="text" name="content" placeholder="Add a Comment..." required>
-                            <input type="hidden" name="post" value= <%= i._id %> >
+                            <input type="hidden" name="post" value=  ${post._id} >
                             <button type="submit" >Add</button>
                         </form> 
                         
