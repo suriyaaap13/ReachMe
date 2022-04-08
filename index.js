@@ -11,6 +11,8 @@ const MongoStore = require('connect-mongo');
 const sassMiddleware = require('node-sass-middleware');
 const flash = require('connect-flash');
 const customMware = require('./config/middleware');
+const multer = require('multer');
+const upload = multer();
 
 const app = express();
 
@@ -24,6 +26,8 @@ app.use(sassMiddleware({
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static('./assets'));
+// set up the uploads for the browser to use
+app.use('/uploads', express.static(__dirname+'/uploads'));
 
 // set up the view engine
 app.use(expressLayouts);

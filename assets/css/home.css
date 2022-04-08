@@ -55,6 +55,7 @@
 
 * #layout-main #home-container #user-friends {
   width: 20%;
+  min-height: 100%;
   border-left: 1px solid lightgray;
   padding: 1rem 0px;
   text-align: center;
