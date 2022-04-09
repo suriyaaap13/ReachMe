@@ -60,6 +60,7 @@ module.exports.create = async function(req, res){
 
 // sign in and create a session for the user
 module.exports.createSession = function(req, res){
+    console.log("Hello World Error Here");
     req.flash('success', 'Logged In Successfully');
     return res.redirect('/');
 }
@@ -89,6 +90,5 @@ module.exports.update = async function(req, res){
     }else{
         res.flash('error', "You are not allowed to update");
         return res.status(401).send('Unauthorized');
-        res.redirect('back');
     }
 }
