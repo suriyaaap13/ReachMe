@@ -22,7 +22,7 @@
                     let newPost = newPostDom(data.data.post);
                     $('#post-list-container>ul').prepend(newPost);
                     console.log($('.delete-post-btn', newPost));
-                    deletePost($('.delete-post-btn', newPost.post));
+                    deletePost($('.delete-post-btn', newPost));
                     createComment(data.data.post._id);
                 }, error: function(error){
                     console.log(error.responseText);
@@ -94,7 +94,8 @@
 
     // // function to submit the form data for new comment using AJAX
     let createComment = function(PostId){
-        console.log("Hello World I am in createComment", PostId);
+        let comments = $(`post-comment-${PostId}`);
+        console.log(comments);
         let commentForm = $(`#add-comment-form-${ PostId }`);
         console.log(commentForm);
         commentForm.submit(function(e){
@@ -137,6 +138,8 @@
     }
     
     let deleteComment = function(deleteLink){
+        console.log('deleteLink');
+        console.log(deleteLink);
         $(deleteLink).click(function(e){
             e.preventDefault();
             $.ajax({
@@ -151,7 +154,30 @@
             });
         });
     }
+
+
+    function convertPoststoAJAX(){
+        $('#post-list-container>ul>li').each(function(){
+            let self = $(this);
+            let deleteButton = $(' .delete-post-btn', self);
+            deletePost(deleteButton);
+            let postId = self.prop('id').split('-')[1];
+            // $(`#post-comment-${ i._id }`);
+            $(`#post-comment-${ postId }>li`).each(() => {
+                console.log(this);
+                deleteComment($(' .delete-comment-btn', this));
+            });
+            createComment(postId);
+        });
+    }
+    
+
+
+
+
+
     createPost();
+    convertPoststoAJAX();
 
 }
     
