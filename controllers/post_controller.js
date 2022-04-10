@@ -6,12 +6,11 @@ module.exports.create = async function(req, res){
     
     try{
         let post = await Post.create({content: req.body.content, user: req.user._id});
-        let user = await User.findById(req.user._id);
+        post = await post.populate('user');
         if(req.xhr){
             return res.status(200).json({
                 data: {
-                    post: post,
-                    userName: user.name
+                    post: post
                 },
                 message: "Post created"
             });

@@ -19,7 +19,7 @@
                         layout: 'topRight',
                         timeout: 1000
                     }).show();
-                    let newPost = newPostDom(data.data);
+                    let newPost = newPostDom(data.data.post);
                     $('#post-list-container>ul').prepend(newPost);
                     console.log($('.delete-post-btn', newPost));
                     deletePost($('.delete-post-btn', newPost.post));
@@ -33,29 +33,29 @@
 
     // method to create a post in DOM
     let newPostDom = function(post){
-        return $(`<li id="post-${ post.post._id }">
+        return $(`<li id="post-${ post._id }">
                     <div class="post-card">
                         <div class="post-card-title">
                             <p>
-                                ${post.userName}
+                                ${post.user.name}
                             </p>
                             <p>
-                                <a class="delete-post-btn" href="/posts/destroy/${ post.post._id }">
+                                <a class="delete-post-btn" href="/posts/destroy/${ post._id }">
                                     X
                                 </a>
                             </p>
                             
                         </div>
                         <div class="post-content">
-                            ${ post.post.content }
+                            ${ post.content }
                         </div>
-                        <ul id="post-comment-${ post.post._id }">
+                        <ul id="post-comment-${ post._id }">
                             
                         </ul>
                     
-                        <form action="/comments/create" id="add-comment-form-${post.post._id}" method="post">
+                        <form action="/comments/create" id="add-comment-form-${post._id}" method="post">
                             <input type="text" name="content" placeholder="Add a Comment..." required>
-                            <input type="hidden" name="post" value=  ${post.post._id} >
+                            <input type="hidden" name="post" value=  ${post._id} >
                             <button type="submit" >Add</button>
                         </form> 
                         
