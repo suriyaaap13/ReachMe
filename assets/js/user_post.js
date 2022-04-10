@@ -94,7 +94,9 @@
 
     // // function to submit the form data for new comment using AJAX
     let createComment = function(PostId){
+        console.log("Hello World I am in createComment", PostId);
         let commentForm = $(`#add-comment-form-${ PostId }`);
+        console.log(commentForm);
         commentForm.submit(function(e){
             e.preventDefault();
             $.ajax({
@@ -103,7 +105,7 @@
                 data: commentForm.serialize(),
                 success: function(data){
                     console.log(data);
-                    let newComment = newCommentDOM(data.data);
+                    let newComment = newCommentDOM(data.data.comment);
                     $(`#post-comment-${ PostId }`).prepend(newComment);
                     deleteComment($(' .delete-comment-btn', newComment));
                 },error: function(err){
@@ -115,19 +117,19 @@
 
     // method to create comment in DOM
     let newCommentDOM = function(comment){
-        return $(`<li id="comment-${ comment.comment._id }">
+        return $(`<li id="comment-${ comment._id }">
                     <div class="comment-card">
                         <div class="comment-title">
                             <p>
-                                ${ comment.userName }
+                                ${ comment.user.name }
                             </p>
-                            <a class="delete-comment-btn" href="/comments/destroy/${ comment.comment._id }">
+                            <a class="delete-comment-btn" href="/comments/destroy/${ comment._id }">
                                 <p>X</p>
                             </a>
                         </div>
                         <div class="comment-content">
                             <p>
-                            ${ comment.comment.content }
+                            ${ comment.content }
                             </p>
                         </div>
                     </div> 
